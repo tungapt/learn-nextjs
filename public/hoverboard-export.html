@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Смешарики Hoverboard Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Elements */
+        .decorative {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star { color: #fbbf24; font-size: 24px; }
+        .flower { color: #f9a8d4; font-size: 20px; }
+        .butterfly { color: #34d399; font-size: 18px; }
+        .candy { color: #fb923c; font-size: 20px; }
+
+        /* Header */
+        .header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 128px;
+            height: 128px;
+            background: #2563eb;
+            border-radius: 50%;
+            border: 4px solid #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .logo span {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .characters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .character {
+            text-align: center;
+        }
+
+        .character-emoji {
+            font-size: 64px;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-name {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(to bottom, #86efac 0%, #4ade80 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 2rem;
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-characters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-character {
+            text-align: center;
+        }
+
+        .hero-character-emoji {
+            font-size: 96px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hoverboard {
+            width: 128px;
+            height: 32px;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        .hoverboard-blue { background: #2563eb; }
+        .hoverboard-purple { background: #7c3aed; }
+
+        .cta-button {
+            background: #fbbf24;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 1rem 3rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Technical Specs */
+        .specs {
+            position: relative;
+            z-index: 10;
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .specs h2 {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .spec-item {
+            text-align: center;
+        }
+
+        .spec-icon {
+            font-size: 48px;
+            margin-bottom: 0.75rem;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            color: #6b7280;
+        }
+
+        .specs-character {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .specs-character-emoji {
+            font-size: 96px;
+            margin-bottom: 0.5rem;
+        }
+
+        .specs-character-name {
+            color: #6b7280;
+        }
+
+        /* What's in the Box */
+        .box-section {
+            position: relative;
+            z-index: 10;
+            background: #fef3c7;
+            padding: 4rem 0;
+        }
+
+        .box-section h2 {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .product-box {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            max-width: 512px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-box-content {
+            text-align: center;
+        }
+
+        .product-box-emoji {
+            font-size: 96px;
+            margin-bottom: 1rem;
+        }
+
+        .product-box-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-box-subtitle {
+            color: #6b7280;
+        }
+
+        .box-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .box-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .box-item-emoji {
+            font-size: 48px;
+            margin-bottom: 0.75rem;
+        }
+
+        .box-item-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .box-character {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .box-character-emoji {
+            font-size: 96px;
+            margin-bottom: 0.5rem;
+        }
+
+        .box-character-name {
+            color: #6b7280;
+        }
+
+        /* Features */
+        .features {
+            position: relative;
+            z-index: 10;
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+
+        .feature:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #6b7280;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .feature-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .feature-badge {
+            background: #e5e7eb;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 14px;
+        }
+
+        .feature-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .feature-emoji {
+            font-size: 96px;
+            margin-bottom: 1rem;
+        }
+
+        /* Discount */
+        .discount {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(to right, #fbbf24 0%, #f59e0b 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .discount h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            margin-bottom: 2rem;
+        }
+
+        .price-current {
+            font-size: 64px;
+            font-weight: bold;
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-original {
+            font-size: 24px;
+            color: #6b7280;
+            text-decoration: line-through;
+        }
+
+        .discount-cta {
+            background: #fbbf24;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 1rem 3rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .process-icon {
+            font-size: 48px;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .process-description {
+            color: #6b7280;
+        }
+
+        .discount-characters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .discount-character {
+            text-align: center;
+        }
+
+        .discount-character-emoji {
+            font-size: 64px;
+            margin-bottom: 0.5rem;
+        }
+
+        .discount-hoverboard {
+            width: 96px;
+            height: 24px;
+            border-radius: 6px;
+            margin: 0 auto;
+        }
+
+        /* Contact */
+        .contact {
+            position: relative;
+            z-index: 10;
+            background: #fef3c7;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 18px;
+        }
+
+        .contact-button {
+            background: #10b981;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 1rem 3rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            background: #d1d5db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-phone {
+            font-size: 20px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-hours {
+            color: #6b7280;
+        }
+
+        .copyright {
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            .box-items { grid-template-columns: repeat(2, 1fr); }
+            .feature { flex-direction: column; }
+            .feature:nth-child(even) { flex-direction: column; }
+            .process-steps { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Decorative Elements -->
+        <div class="decorative star" style="top: 80px; left: 40px;">⭐</div>
+        <div class="decorative flower" style="top: 160px; right: 80px;">🌸</div>
+        <div class="decorative butterfly" style="top: 240px; left: 25%;">🦋</div>
+        <div class="decorative butterfly" style="top: 320px; right: 33%;">🦋</div>
+        <div class="decorative candy" style="top: 128px; left: 33%;">🍬</div>
+        <div class="decorative star" style="top: 384px; right: 40px;">⭐</div>
+        <div class="decorative flower" style="top: 50%; left: 80px;">🌸</div>
+        <div class="decorative butterfly" style="top: 50%; right: 25%;">🦋</div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span>СМЕШАРИКИ</span>
+            </div>
+            <h2 class="tagline">Гироскутеры с персонажами любимого мультика</h2>
+            <div class="characters">
+                <div class="character">
+                    <div class="character-emoji">🐰</div>
+                    <div class="character-name">Krosh</div>
+                </div>
+                <div class="character">
+                    <div class="character-emoji">🐑</div>
+                    <div class="character-name">Nyusha</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>ПОРАДУЙТЕ СВОЕГО РЕБЕНКА</h1>
+            <p>ЗАКАЖИТЕ УНИКАЛЬНЫЙ ГИРОСКУТЕР С ГЕРОЯМИ ЛЮБИМОГО МУЛЬТФИЛЬМА И КОМПЛЕКТОМ ЗАЩИТЫ</p>
+            <div class="hero-characters">
+                <div class="hero-character">
+                    <div class="hero-character-emoji">🐰</div>
+                    <div class="hoverboard hoverboard-blue"></div>
+                </div>
+                <div class="hero-character">
+                    <div class="hero-character-emoji">🐷</div>
+                    <div class="hoverboard hoverboard-purple"></div>
+                </div>
+            </div>
+            <button class="cta-button">ЗАКАЗАТЬ СЕЙЧАС</button>
+        </section>
+
+        <!-- Technical Specifications -->
+        <section class="specs">
+            <h2>ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-icon">🔧</div>
+                    <div class="spec-label">Тип / Чипсет</div>
+                    <div class="spec-value">Гироскутер</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">⚙️</div>
+                    <div class="spec-label">Диаметр колес</div>
+                    <div class="spec-value">6.5 дюймов</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">⚡</div>
+                    <div class="spec-label">Время зарядки</div>
+                    <div class="spec-value">2-3 часа</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">🏃</div>
+                    <div class="spec-label">Мин / Макс скорость</div>
+                    <div class="spec-value">1/15 км/ч</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">⚖️</div>
+                    <div class="spec-label">Вес</div>
+                    <div class="spec-value">10 кг</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">👤</div>
+                    <div class="spec-label">Макс нагрузка</div>
+                    <div class="spec-value">100 кг</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">⏱️</div>
+                    <div class="spec-label">Пробег</div>
+                    <div class="spec-value">3-4 часа</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">🔋</div>
+                    <div class="spec-label">Аккумулятор</div>
+                    <div class="spec-value">36V 4.4Ah</div>
+                </div>
+            </div>
+            <div class="specs-character">
+                <div class="specs-character-emoji">🐻</div>
+                <div class="specs-character-name">Kopatych</div>
+            </div>
+        </section>
+
+        <!-- What's in the Box -->
+        <section class="box-section">
+            <h2>ЧТО В КОРОБКЕ?</h2>
+            <div class="product-box">
+                <div class="product-box-content">
+                    <div class="product-box-emoji">📦</div>
+                    <div class="product-box-title">Гироскутер для детей</div>
+                    <div class="product-box-subtitle">С персонажами Смешарики</div>
+                </div>
+            </div>
+            <div class="box-items">
+                <div class="box-item">
+                    <div class="box-item-emoji">🛴</div>
+                    <div class="box-item-name">Гироскутер</div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-emoji">👜</div>
+                    <div class="box-item-name">Сумка</div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-emoji">🛡️</div>
+                    <div class="box-item-name">Набор защиты</div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-emoji">🎒</div>
+                    <div class="box-item-name">Сумка-чехол</div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-emoji">🔌</div>
+                    <div class="box-item-name">Зарядное устройство</div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-emoji">📖</div>
+                    <div class="box-item-name">Инструкция</div>
+                </div>
+            </div>
+            <div class="box-character">
+                <div class="box-character-emoji">🦌</div>
+                <div class="box-character-name">Losyash</div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <div class="feature">
+                <div class="feature-content">
+                    <h3 class="feature-title">НАДЕЖНОСТЬ</h3>
+                    <p class="feature-description">Наши гироскутеры проходят строгий контроль качества и соответствуют всем международным стандартам безопасности.</p>
+                </div>
+                <div class="feature-image">
+                    <div class="feature-emoji">🛴</div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h3 class="feature-title">КРАСОЧНОЕ ПРИЛОЖЕНИЕ</h3>
+                    <p class="feature-description">• Подключение через Bluetooth
+• Воспроизведение музыки
+• Контроль скорости
+• Диагностика устройства</p>
+                    <div class="feature-badges">
+                        <span class="feature-badge">App Store</span>
+                        <span class="feature-badge">Google Play</span>
+                    </div>
+                </div>
+                <div class="feature-image">
+                    <div class="feature-emoji">📱</div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h3 class="feature-title">ГИРОСКУТЕР - ЭТО ПРОСТО!</h3>
+                    <p class="feature-description">Научиться кататься на гироскутере очень просто! Всего несколько минут тренировки, и ваш ребенок будет уверенно кататься.</p>
+                </div>
+                <div class="feature-image">
+                    <div class="feature-emoji">🛴</div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h3 class="feature-title">ЗАЩИТА В ПОДАРОК</h3>
+                    <p class="feature-description">В комплект входит полный набор защиты: шлем, налокотники и наколенники для безопасного катания.</p>
+                </div>
+                <div class="feature-image">
+                    <div class="feature-emoji">🛡️</div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <h3 class="feature-title">УДОБНАЯ СУМКА</h3>
+                    <p class="feature-description">Специальная сумка для переноски гироскутера с удобными ручками и дополнительными карманами.</p>
+                </div>
+                <div class="feature-image">
+                    <div class="feature-emoji">👜</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discount -->
+        <section class="discount">
+            <h2>ПОЛУЧИТЕ СКИДКУ!</h2>
+            <div class="price">
+                <div class="price-current">15 000 РУБ</div>
+                <div class="price-original">17 000 РУБ</div>
+            </div>
+            <button class="discount-cta">ЗАКАЗАТЬ ГИРОСКУТЕР</button>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-icon">✍️</div>
+                    <div class="process-number">1</div>
+                    <div class="process-title">Оставьте заявку</div>
+                    <div class="process-description">на сайте</div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">📞</div>
+                    <div class="process-number">2</div>
+                    <div class="process-title">Менеджер свяжется</div>
+                    <div class="process-description">с вами и уточнит детали</div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">📦</div>
+                    <div class="process-number">3</div>
+                    <div class="process-title">Вы получите заказ</div>
+                    <div class="process-description">по указанному адресу</div>
+                </div>
+            </div>
+            <div class="discount-characters">
+                <div class="discount-character">
+                    <div class="discount-character-emoji">🐰</div>
+                    <div class="hoverboard hoverboard-blue"></div>
+                </div>
+                <div class="discount-character">
+                    <div class="discount-character-emoji">🐻</div>
+                    <div class="hoverboard hoverboard-purple"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact">
+            <h2>ОСТАЛИСЬ ВОПРОСЫ? СПРОСИТЕ У НАС - ПОДСКАЖЕМ И РАССКАЖЕМ!</h2>
+            <div class="contact-form">
+                <input type="text" placeholder="Ваше имя" class="contact-input">
+                <button class="contact-button">ОТПРАВИТЬ</button>
+            </div>
+            <div class="social-media">
+                <div class="social-icon">V</div>
+                <div class="social-icon">T</div>
+                <div class="social-icon">I</div>
+                <div class="social-icon">F</div>
+                <div class="social-icon">Y</div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-phone">+7 (999) 999-99-99</div>
+                <div class="contact-hours">Работаем с 09:00 до 21:00 ежедневно</div>
+            </div>
+            <div class="copyright">© 2023 Смешарики</div>
+        </section>
+    </div>
+</body>
+</html> 

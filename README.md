@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NewsHub - Website Tin Tức
 
-## Getting Started
+Một website tin tức hiện đại được xây dựng với Next.js và Tailwind CSS.
 
-First, run the development server:
+## 🌟 Tính năng
+
+- **Trang chủ**: Hiển thị tin nổi bật và tin mới nhất
+- **Trang danh sách tin**: Phân loại theo chuyên mục
+- **Trang chi tiết**: Hiển thị đầy đủ nội dung bài viết
+- **Responsive Design**: Tương thích với mọi thiết bị
+- **SEO Optimized**: Tối ưu cho công cụ tìm kiếm
+
+## 🚀 Công nghệ sử dụng
+
+- **Next.js 15**: Framework React hiện đại
+- **Tailwind CSS**: Utility-first CSS framework
+- **Lucide React**: Icon library
+- **GitHub Pages**: Hosting platform
+
+## 📱 Các trang
+
+- **Trang chủ**: `/`
+- **Danh sách tin**: `/category/[slug]`
+- **Chi tiết tin**: `/news/[id]`
+
+## 🛠️ Cài đặt và chạy
 
 ```bash
+# Clone repository
+git clone https://github.com/your-username/learn-nextjs.git
+
+# Di chuyển vào thư mục
+cd learn-nextjs
+
+# Cài đặt dependencies
+npm install
+
+# Chạy development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build cho production
+npm run build
+
+# Export cho GitHub Pages
+npm run export
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Truy cập
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Development**: http://localhost:3001
+- **Production**: https://your-username.github.io/learn-nextjs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Cấu trúc dự án
 
-## Learn More
+```
+src/
+├── app/
+│   ├── page.js                 # Trang chủ
+│   ├── category/[slug]/        # Trang danh sách tin
+│   └── news/[id]/              # Trang chi tiết tin
+├── components/
+│   ├── Header.js              # Component header
+│   └── Footer.js              # Component footer
+└── ...
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Chuyên mục
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Công nghệ**: Tin tức về công nghệ mới
+- **Kinh tế**: Tin tức kinh tế và tài chính
+- **Sức khỏe**: Tin tức về sức khỏe và y tế
+- **Du lịch**: Tin tức du lịch và khám phá
+- **Văn hóa**: Tin tức văn hóa và nghệ thuật
+- **Môi trường**: Tin tức về môi trường
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
+MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Đóng góp
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mọi đóng góp đều được chào đón! Vui lòng tạo issue hoặc pull request.
+
+---
+
+**NewsHub** - Tin tức mới nhất và đáng tin cậy! 📰
